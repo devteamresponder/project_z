@@ -104,7 +104,7 @@ Mensagem: ${formData.message}`;
               <Menu className="h-6 w-6 text-gray-700" />
             </button>
             <div className="flex items-center space-x-2">
-              <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-[7rem] max-w-[7rem]" />
+              <img src={logoZe} alt="Logo Ze" className="h-[7rem] max-w-[7rem]" />
             </div>
             <nav className="hidden lg:flex items-center space-x-6">
               <button onClick={() => scrollToSection('inicio')} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">
@@ -411,7 +411,7 @@ Mensagem: ${formData.message}`;
       <footer className="bg-black text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-[3rem] max-w-[3rem]" />
+            <img src={logoZe} alt="Logo Ze" className="h-[3rem] max-w-[3rem]" />
           </div>
           <p className="text-gray-400 mb-4">Transformando ambientes com qualidade e profissionalismo desde 1980.</p>
           <p className="text-gray-500 text-sm">© 2025 José Luiz Guimarães. Todos os direitos reservados.</p>
