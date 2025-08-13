@@ -22,6 +22,15 @@ const portfolio = [
   { title: 'Área Gourmet', description: 'Piso vinílico e instalação de coifa industrial', image: 'https://images.pexels.com/photos/1444424/pexels-photo-1444424.jpeg?auto=compress&cs=tinysrgb&w=800' },
 ];
 
+// Imagens do carrossel de construção
+const carouselImages = [
+  'https://images.pexels.com/photos/1358900/pexels-photo-1358900.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'https://images.pexels.com/photos/159045/the-interior-of-the-repair-interior-design-159045.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'https://images.pexels.com/photos/276651/pexels-photo-276651.jpeg?auto=compress&cs=tinysrgb&w=1920'
+];
+
 export default function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -32,6 +41,7 @@ export default function App() {
   });
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -43,6 +53,17 @@ export default function App() {
       document.body.style.overflow = 'auto';
     };
   }, [isMobileMenuOpen]);
+
+  // Carrossel automático
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Muda a cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -162,9 +183,47 @@ Mensagem: ${formData.message}`;
         )}
       </header>
 
-      {/* Hero Section */}
-      <section id="inicio" className="pt-44 lg:pt-36 pb-16 px-4">
-        <div className="container mx-auto text-center">
+      {/* Hero Section com Carrossel */}
+      <section id="inicio" className="relative pt-44 lg:pt-36 pb-16 px-4 overflow-hidden">
+        {/* Carrossel de Imagens de Fundo */}
+        <div className="absolute inset-0 z-0">
+          {carouselImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={image}
+                alt={`Construção ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay com gradiente para ofuscar */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-slate-100/90 to-slate-200/85"></div>
+              {/* Overlay adicional para melhor contraste */}
+              <div className="absolute inset-0 bg-white/20"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Indicadores do Carrossel */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+          {carouselImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex
+                  ? 'bg-blue-600 scale-125'
+                  : 'bg-white/60 hover:bg-white/80'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Conteúdo da Hero Section */}
+        <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Transforme Sua Casa com <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Qualidade Profissional</span>
