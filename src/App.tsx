@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Link } from 'react-router-dom';
+import logoZe from '@/assets/logo-ze.png';
 
 const services = [
   { icon: HomeIcon, title: 'Instalação de Coifa', description: 'Instalação profissional de coifas de todos os tipos, garantindo perfeita ventilação e segurança.', features: ['Coifas residenciais', 'Coifas industriais', 'Manutenção', 'Garantia de serviço'] },
@@ -118,10 +119,15 @@ Mensagem: ${formData.message}`;
               <button onClick={() => scrollToSection('contato')} className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50">
                 <Mail className="h-4 w-4" /><span className="text-sm font-medium">Contato</span>
               </button>
-              <Link to="/" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors py-2 px-3 rounded-lg hover:bg-blue-50 ml-4 border-l pl-6">
-                <ArrowLeft className="h-4 w-4" /><span>Voltar</span>
-              </Link>
             </nav>
+            <div className="hidden lg:block">
+              <a href="https://wa.me/5537999614569">
+                <Button className="bg-green-600 hover:bg-green-700">
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  WhatsApp
+                </Button>
+              </a>
+            </div>
             <div className="lg:hidden">
               <a href="https://wa.me/5537999614569">
                 <Button className="bg-green-600 hover:bg-green-700">
@@ -145,7 +151,7 @@ Mensagem: ${formData.message}`;
             >
               <div className="flex items-center justify-between p-6 border-b">
                 <div className="flex items-center space-x-2">
-                  <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-12 w-12" />
+                  <img src={logoZe} alt="Logo Ze" className="h-12 w-12" />
                   <span className="text-lg font-semibold text-gray-900">Menu</span>
                 </div>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
@@ -184,7 +190,7 @@ Mensagem: ${formData.message}`;
       </header>
 
       {/* Hero Section com Carrossel */}
-      <section id="inicio" className="relative pt-44 lg:pt-36 pb-16 px-4 overflow-hidden">
+      <section id="inicio" className="relative pt-44 lg:pt-36 pb-20 px-4 overflow-hidden min-h-[80vh]">
         {/* Carrossel de Imagens de Fundo */}
         <div className="absolute inset-0 z-0">
           {carouselImages.map((image, index) => (
@@ -199,24 +205,24 @@ Mensagem: ${formData.message}`;
                 alt={`Construção ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              {/* Overlay com gradiente para ofuscar */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-50/95 via-slate-100/90 to-slate-200/85"></div>
-              {/* Overlay adicional para melhor contraste */}
+              {/* Overlay com blur mais acentuado */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-50/75 via-slate-100/65 to-slate-200/55"></div>
+              {/* Overlay adicional para contraste do texto */}
               <div className="absolute inset-0 bg-white/20"></div>
             </div>
           ))}
         </div>
 
         {/* Indicadores do Carrossel */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
           {carouselImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 index === currentImageIndex
                   ? 'bg-blue-600 scale-125'
-                  : 'bg-white/60 hover:bg-white/80'
+                  : 'bg-white/70 hover:bg-white/90'
               }`}
             />
           ))}
@@ -225,10 +231,10 @@ Mensagem: ${formData.message}`;
         {/* Conteúdo da Hero Section */}
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight drop-shadow-lg">
               Transforme Sua Casa com <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">Qualidade Profissional</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto drop-shadow-md">
               Serviços especializados em instalação de coifas, pisos vinílicos, nichos, bancadas, iluminação e instalações hidráulicas. Qualidade garantida e acabamento impecável.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

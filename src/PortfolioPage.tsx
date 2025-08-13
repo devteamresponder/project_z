@@ -3,10 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import logoZe from '@/assets/logo-ze.png';
 
 const portfolioCategories = [
   {
-    id: 'iluminacao',
+    id: 'iluminacao', 
     title: 'Instalações de Iluminação',
     description: 'Spots, lustres, arandelas e sistemas LED modernos',
     icon: Lightbulb,
@@ -213,7 +214,7 @@ export default function PortfolioPage() {
             </button>
 
             <div className="flex items-center space-x-2">
-              <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-[7rem] max-w-[7rem]" />
+              <img src={logoZe} alt="Logo Ze" className="h-[7rem] max-w-[7rem]" />
             </div>
 
             <nav className="hidden lg:flex items-center space-x-6">
@@ -263,7 +264,7 @@ export default function PortfolioPage() {
             {/* Menu Header */}
             <div className="flex items-center justify-between p-6 border-b">
               <div className="flex items-center space-x-2">
-                <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-12 w-12" />
+                <img src={logoZe} alt="Logo Ze" className="h-12 w-12" />
                 <span className="text-lg font-semibold text-gray-900">Menu</span>
               </div>
               <button
@@ -413,7 +414,7 @@ export default function PortfolioPage() {
       <footer className="bg-black text-white py-12">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-6">
-            <img src="/assets/logo-ze.png" alt="Logo Ze" className="h-[3rem] max-w-[3rem]" />
+            <img src={logoZe} alt="Logo Ze" className="h-[3rem] max-w-[3rem]" />
           </div>
           <p className="text-gray-400 mb-4 text-lg">
             Transformando ambientes com qualidade e profissionalismo desde 2019.
